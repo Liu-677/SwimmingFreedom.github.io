@@ -25,55 +25,65 @@
        }
        .time{
         position: absolute;
-        top: 240px;
-        left: 251px;
+        top: 230px;
+        left: 248px;
         font-family: "Source-Sans-Pro-Semibold";
-        font-weight: 1500;
+        font-weight: 1500px;
         font-size: 150px;
        }
-       .date{
+        .datetime{
         position: absolute;
-        top: 124px;
-        left: 289px;
-        /* right: 100px; */
-        font-family: "Source-Sans-Pro-Semibold",'NotoSansSC-Bold';
-        font-weight: 1500;
-        font-size: 120px;
+        top: 73px;
+        font-family: "Source-Sans-Pro-Semibold";
+        font-weight: 1500px;
+        font-size: 130px;
         }
+        .dateCN{
+            position: absolute;
+            top: 103px;
+            font-family: "NotoSansSC-Bold";
+            font-weight: 1500px;
+            font-size: 120px;
+        }
+
 </style>
 
-<body onload="setinfo()">
+<body>
 
 
     <div style="width: 100%; height: 399px; position: absolute; top: 0px;" id="ball">
         <img style="z-index:1" src="./浙财_files/background.jpg" alt="picture">
     </div>
+    <div class="datetime" style="left: 268px;" id="m"></div>
+    <div class="datetime" style="left: 515px;"  id="d"></div>
+    <div class="dateCN" style="left: 395px;"  id="yue">月</div>
+    <div class="dateCN" style="left: 642px;"  id="ri">日</div>
+    <div class="time" id="dtime">17:19:26</div>
 
-    <div class="date" id="ddate">当前日期:</div>
-    <div class="time" id="dtime">当前时间:</div>
-
-    <!-- <div class="info" style="top: 490px;" id="name"><b>任付越</b></div> -->
-    <div class="info" id="name">刘某人</div>
+    <div class="info" id="name">李叶叶</div>
 
 
 
     <script type="text/javascript">
         var divtime=document.getElementById('dtime');
-        var divdate=document.getElementById('ddate');
+        var divmonth=document.getElementById('m');
+        var divday=document.getElementById('d');
         //定时器的用法
         setInterval("settime()",1000);   //每秒
         function settime(){
             var node = new Date();
             var y=node.getFullYear();
-            var m=(node.getMonth()+1);
-            var d=node.getDate();
+            var m=addZero((node.getMonth()+1));
+            var d=addZero(node.getDate());
             var h=addZero(node.getHours());
             var i=addZero(node.getMinutes());
             var s=addZero(node.getSeconds());
             var date="0"+m+"月"+d+"日"
 	        var time=h+":"+i+":"+s;
             divtime.innerHTML=time;
-            divdate.innerHTML=date
+            divmonth.innerHTML=m;
+            divday.innerHTML=d
+            // divdate.innerHTML=date
         }
 
         function addZero(obj){
