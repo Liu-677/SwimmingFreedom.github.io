@@ -11,7 +11,7 @@
     font-family: "NotoSansSC-Bold";
     src: url('浙财_files/NotoSansSC-Bold.ttf');
 }
-       .info{
+        .info{
         position: absolute;
         width:500px;
         left: 126px;
@@ -61,6 +61,8 @@
     <div class="time" id="dtime">17:19:26</div>
 
     <div class="info" id="name">李叶叶</div>
+    
+
 
 
 
@@ -68,6 +70,16 @@
         var divtime=document.getElementById('dtime');
         var divmonth=document.getElementById('m');
         var divday=document.getElementById('d');
+        var divname=document.getElementById('name')
+        url=window.location.href
+        url=decodeURI(url);
+        username=url.split('=')[1]
+        
+        if (username !=null)
+        {
+            divname.innerHTML=username;
+        }
+            
         //定时器的用法
         setInterval("settime()",1000);   //每秒
         function settime(){
@@ -83,7 +95,6 @@
             divtime.innerHTML=time;
             divmonth.innerHTML=m;
             divday.innerHTML=d
-            // divdate.innerHTML=date
         }
 
         function addZero(obj){
