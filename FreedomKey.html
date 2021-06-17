@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>浙江财大学通行码</title>
+<style>
+    @font-face{
+    font-family: "Source-Sans-Pro-Semibold";
+    src: url('SwimmingFreedom//Source-Sans-Pro-Semibold.ttf');
+}
+@font-face{
+    font-family: "NotoSansSC-Bold";
+    src: url('SwimmingFreedom//NotoSansSC-Bold.ttf');
+}
+        .info{
+        position: absolute;
+        width:500px;
+        left: 126px;
+        top: 492px;
+        border:0px solid red;
+        margin: 0 auto;
+        font-size: 60px;
+        font-family:黑体;
+        color: black;
+        text-align: left;
+       }
+       .time{
+        position: absolute;
+        top: 230px;
+        left: 248px;
+        font-family: "Source-Sans-Pro-Semibold";
+        font-weight: 1500px;
+        font-size: 150px;
+       }
+        .datetime{
+        position: absolute;
+        top: 73px;
+        font-family: "Source-Sans-Pro-Semibold";
+        font-weight: 1500px;
+        font-size: 130px;
+        }
+        .dateCN{
+            position: absolute;
+            top: 103px;
+            font-family: "NotoSansSC-Bold";
+            font-weight: 1500px;
+            font-size: 120px;
+        }
+
+</style>
+
+<body>
+
+
+    <div style="width: 100%; height: 399px; position: absolute; top: 0px;" id="ball">
+        <img style="z-index:1" src="SwimmingFreedom/background.jpg" alt="picture">
+    </div>
+    <div class="datetime" style="left: 268px;" id="m"></div>
+    <div class="datetime" style="left: 515px;"  id="d"></div>
+    <div class="dateCN" style="left: 395px;"  id="yue">月</div>
+    <div class="dateCN" style="left: 642px;"  id="ri">日</div>
+    <div class="time" id="dtime">17:19:26</div>
+
+    <div class="info" id="name">李叶叶</div>
+    
+
+
+
+
+    <script type="text/javascript">
+        var divtime=document.getElementById('dtime');
+        var divmonth=document.getElementById('m');
+        var divday=document.getElementById('d');
+        var divname=document.getElementById('name')
+        url=window.location.href
+        url=decodeURI(url);
+        username=url.split('=')[1]
+        
+        if (username !=null)
+        {
+            divname.innerHTML=username;
+        }
+            
+        //定时器的用法
+        setInterval("settime()",1000);   //每秒
+        function settime(){
+            var node = new Date();
+            var y=node.getFullYear();
+            var m=addZero((node.getMonth()+1));
+            var d=addZero(node.getDate());
+            var h=addZero(node.getHours());
+            var i=addZero(node.getMinutes());
+            var s=addZero(node.getSeconds());
+            var date="0"+m+"月"+d+"日"
+	        var time=h+":"+i+":"+s;
+            divtime.innerHTML=time;
+            divmonth.innerHTML=m;
+            divday.innerHTML=d
+        }
+
+        function addZero(obj){
+            return obj>9?obj:"0"+obj;
+        }
+    </script>
+
+</body></html>
