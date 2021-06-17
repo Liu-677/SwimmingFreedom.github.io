@@ -70,15 +70,16 @@
         var divtime=document.getElementById('dtime');
         var divmonth=document.getElementById('m');
         var divday=document.getElementById('d');
-        var divname=document.getElementById('name')
-        url=window.location.href
+        var divname=document.getElementById('name');
+        url=window.location.href;
         url=decodeURI(url);
         username=url.split('=')[1]
         
-        if (username !="")
+        if (username !="" )
         {
             divname.innerHTML=username;
         }
+            
             
         //定时器的用法
         setInterval("settime()",1000);   //每秒
@@ -94,7 +95,7 @@
 	        var time=h+":"+i+":"+s;
             divtime.innerHTML=time;
             divmonth.innerHTML=m;
-            divday.innerHTML=d
+            divday.innerHTML=d;
         }
 
         function addZero(obj){
